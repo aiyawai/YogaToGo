@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <title>DB</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body onLoad="init()">
+        <div id=" "device>wait...</div><br>
+        <div id="result">...</div>
+        
+        <script>
+            var mydb;
+            
+            function init(){
+                document.addEventListener("deviceready",onDeviceReady,false);
+            }
+            
+            function onDeviceReady(){
+                document.getElementById("device").innerHTML="device is ready";
+                
+                mydb = window.openDatabase("video","1.0","Database Test",100*1024);
+                
+                mydb.transaction(createDB,onError,onSuccess);
+            }
+            function createDB(tx){
+                tx.executeSql(CREATE TABLE IS NOT EXISTS mytable '+
+                                                    '(p_no,p_name,p_part,p_type)');
+                
+            }
+    </body>
+</html>
